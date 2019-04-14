@@ -1,4 +1,5 @@
 ﻿
 (function () {
-	debug.print("Application started!");
+	console.log("Application started!");
+	console.log("Waiting for orders!");
 }());
