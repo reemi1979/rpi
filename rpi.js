@@ -43,28 +43,10 @@ app.use(function (req, res, next) {
 app.use(body.json());
 
 app.get('/BlinkLED', function (req, res, next) {
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
+  LED.writeSync(1); //set pin state to 1 (turn LED on)
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify("LED BLINKED"));
+  LED.writeSync(0); //set pin state to 1 (turn LED on)
 })
 
 var server = app.listen(2000, function () {
