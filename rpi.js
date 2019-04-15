@@ -43,6 +43,7 @@ app.use(function (req, res, next) {
 app.use(body.json());
 
 app.get('/BlinkLED', function (req, res, next) {
+  var LED = new Gpio(6, 'out')
   LED.writeSync(1); //set pin state to 1 (turn LED on)
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify("LED BLINKED"));
