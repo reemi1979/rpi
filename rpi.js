@@ -17,7 +17,7 @@ function endBlink() { //function to stop blinking
   LED.unexport(); // Unexport GPIO to free resources
 }
 
-setTimeout(endBlink, 5000); //stop blinking after 5 seconds
+setTimeout(endBlink, 2000); //stop blinking after 5 seconds
 
 // ================================
 
@@ -42,15 +42,16 @@ app.use(function (req, res, next) {
 
 app.use(body.json());
 
-app.get('/ToggleLED', function (req, res, next) {
-  var LED = new Gpio(6, 'out')
+app.get('/RelayToggle', function (req, res, next) {
+  res.setHeader('Content-Type', 'application/json');
+  var LED = new Gpio(6, 'out');
   if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
     LED.writeSync(1); //set pin state to 1 (turn LED on)
+    res.send(JSON.stringify("RELAY 6 ON"));
   } else {
     LED.writeSync(0); //set pin state to 0 (turn LED off)
+    res.send(JSON.stringify("RELAY 6 OFF"));
   }
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify("LED BLINKED"));
 })
 
 var server = app.listen(2000, function () {
