@@ -55,5 +55,7 @@ app.get('/RelayToggle', function (req, res, next) {
 })
 
 var server = app.listen(2000, function () {
-	console.log("Started...rpi.js is running on 192.168.1.114, port 2000");
+  console.log("Started...rpi.js is running on 192.168.1.114, port 2000");
+  console.log("http://192.168.1.114:2000/RelayToggle");
 });
+
