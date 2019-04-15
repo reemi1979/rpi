@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
 app.use(body.json());
 
 app.get('/BlinkLED', function (req, res, next) {
-  blinkLED();
+  endBlink();
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify("LED BLINKED"));
 })
