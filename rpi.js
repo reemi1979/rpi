@@ -23,6 +23,7 @@ setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 
 var express = require('express');
 var app = express();
+var body = require('body-parser');
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
